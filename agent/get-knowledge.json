@@ -1,0 +1,138 @@
+{
+  "action_name": "getBookData",
+  "description": "Busca, consolida e estrutura informações confiáveis sobre um livro, utilizando fontes públicas na internet, priorizando conteúdo em português e complementando com fontes internacionais quando necessário.",
+  "input_schema": {
+    "type": "object",
+    "required": ["titulo", "autor"],
+    "properties": {
+      "titulo": {
+        "type": "string",
+        "description": "Título do livro informado pelo usuário."
+      },
+      "autor": {
+        "type": "string",
+        "description": "Nome do autor ou autores do livro."
+      }
+    }
+  },
+  "instructions": {
+    "general_guidelines": [
+      "Utilize o título e o autor como chaves primárias de busca.",
+      "Priorize fontes em língua portuguesa.",
+      "Utilize fontes em língua inglesa apenas para complementar ou validar informações.",
+      "Cruze informações entre múltiplas fontes para reduzir inconsistências.",
+      "Evite inferências não verificáveis.",
+      "Quando houver divergência entre fontes, priorize Google Books e editoras."
+    ],
+    "search_strategy": {
+      "primary_sources_pt": [
+        "Amazon Livros",
+        "Google Books",
+        "Goodreads (PT-BR quando disponível)",
+        "Sites de editoras brasileiras",
+        "Resenhas acadêmicas ou técnicas em português"
+      ],
+      "secondary_sources_en": [
+        "Goodreads (EN)",
+        "Amazon (EN)",
+        "Site oficial do autor",
+        "Publisher oficial"
+      ]
+    },
+    "execution_steps": [
+      {
+        "step": 1,
+        "name": "Identificação da obra",
+        "actions": [
+          "Confirmar título e autor",
+          "Identificar possíveis variações de título",
+          "Identificar título original, se existir"
+        ]
+      },
+      {
+        "step": 2,
+        "name": "Coleta bibliográfica",
+        "actions": [
+          "Data de publicação",
+          "Editora",
+          "Número total de páginas",
+          "Edições relevantes",
+          "ISBN, se disponível"
+        ]
+      },
+      {
+        "step": 3,
+        "name": "Análise de conteúdo",
+        "actions": [
+          "Levantamento de resumos oficiais",
+          "Análise de reviews e resenhas",
+          "Identificação do tema central",
+          "Mapeamento de assuntos correlatos"
+        ]
+      },
+      {
+        "step": 4,
+        "name": "Estrutura do livro",
+        "actions": [
+          "Buscar sumário completo",
+          "Validar lista de capítulos",
+          "Normalizar títulos dos capítulos"
+        ]
+      },
+      {
+        "step": 5,
+        "name": "Aplicação e público",
+        "actions": [
+          "Identificar público-alvo principal",
+          "Mapear aplicações profissionais, acadêmicas ou práticas",
+          "Relacionar áreas de conhecimento impactadas"
+        ]
+      }
+    ]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "resumo_livro": {
+        "type": "string",
+        "description": "Resumo consolidado do conteúdo do livro, baseado em múltiplas fontes."
+      },
+      "contextualizacao_tema": {
+        "type": "string",
+        "description": "Contextualização do tema principal, incluindo discussões relevantes, tópicos relacionados e tendências atuais."
+      },
+      "publico_alvo": {
+        "type": "string",
+        "description": "Descrição clara do público-alvo do livro."
+      },
+      "aplicacao_conteudo": {
+        "type": "string",
+        "description": "Descrição das aplicações práticas, acadêmicas ou profissionais do conteúdo."
+      },
+      "capitulos": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Lista completa e ordenada dos capítulos do livro."
+      },
+      "dados_bibliograficos": {
+        "type": "object",
+        "properties": {
+          "titulo": { "type": "string" },
+          "titulo_original": { "type": "string" },
+          "autor": { "type": "string" },
+          "data_publicacao": { "type": "string" },
+          "editora": { "type": "string" },
+          "total_paginas": { "type": "integer" }
+        }
+      }
+    }
+  },
+  "quality_checks": [
+    "Verificar consistência entre fontes",
+    "Evitar duplicação de informações",
+    "Garantir clareza e linguagem objetiva",
+    "Não incluir opiniões pessoais do agente"
+  ]
+}
