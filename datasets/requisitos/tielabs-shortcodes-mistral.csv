@@ -1,0 +1,141 @@
+shortcode,descrição,quando utilizar,quando não utilizar,como utilizar,opções,exemplos
+tie_box,"Cria uma caixa de destaque visual para informações importantes, como alertas, avisos, dicas ou downloads.","- Conteúdo com importância contextual maior que o parágrafo comum
+- Notas editoriais, observações do autor ou avisos técnicos
+- Alertas, erros, avisos, dicas, downloads ou informações auxiliares
+- Necessidade de separação visual para reduzir risco de interpretação incorreta
+- Ancoragem cognitiva em textos longos ou técnicos
+- Artigos técnicos com exceções, limitações ou avisos
+- Reviews com ressalvas importantes
+- Tutoriais com pré-requisitos ou riscos
+- Conteúdo educacional diferenciando teoria de prática","- Conteúdo comum
+- Em excesso (poluição visual)
+- Para substituir headings estruturais","- Envolver apenas o conteúdo que precisa de destaque
+- Escolher o `type` coerente com a intenção semântica (warning, info, etc.)
+- Usar `title` apenas quando o rótulo ajuda na compreensão
+- Evitar múltiplos boxes consecutivos sem texto intermediário
+- Não inserir headings (`<h2>`, `<h3>`) dentro do box
+- Complementar o texto, nunca substituir a explicação principal","type: warning, error, info, tip, download, note
+title: Título opcional do box
+icon: Ícone opcional (ex: fa-exclamation-triangle)","[tie_box type=""warning"" title=""Atenção""]
+Este é um aviso importante para o leitor.
+[/tie_box]"
+tie_button,"Cria um botão com link para direcionar o usuário a uma ação específica, como downloads ou páginas relacionadas.","- Quando há uma ação principal no contexto do artigo
+- Links que representam conversão, continuidade ou desdobramento
+- O leitor já recebeu informação suficiente para agir
+- Reduzir ambiguidade sobre “o que fazer agora”
+- Download de materiais
+- Acesso a páginas relacionadas
+- Chamadas para cadastro, compra ou leitura complementar
+- Continuação de série de artigos","- Dentro de parágrafos corridos
+- Para links de baixa relevância
+- Em excesso na mesma página","- Inserir fora do parágrafo, preferencialmente após uma conclusão
+- Texto do botão deve ser verbo + ação clara (ex: Baixar Agora)
+- Destino (`url`) deve ser previsível para o usuário
+- Usar `_blank` apenas quando sair do domínio faz sentido
+- Ícones devem reforçar o significado, não decorar
+- Encerrar um raciocínio e iniciar uma ação","url: Link de destino
+target: _self (padrão) ou _blank
+style: flat, outline, 3d
+color: Cor do botão (ex: blue, green)
+size: small, medium (padrão), large
+icon: Ícone opcional (ex: fa-download)
+class: Classe CSS adicional","[tie_button url=""https://exemplo.com"" style=""flat"" color=""blue"" size=""medium"" icon=""fa-download""]
+Baixar Material
+[/tie_button]"
+tie_tooltip,"Adiciona uma explicação em tooltip (balão) para termos, siglas ou conceitos, sem interromper o fluxo de leitura.","- Explicar termos, siglas ou conceitos sem quebrar a fluidez
+- Público com níveis variados de conhecimento
+- Conceitos importantes, mas não centrais
+- Termos técnicos, contextuais ou ambíguos
+- Artigos técnicos
+- Glossários inline
+- Conceitos específicos de domínio
+- Siglas ou jargões","- Em dispositivos onde hover não é essencial (conteúdo crítico)
+- Para textos longos
+- Para informações obrigatórias","- Envolver apenas a palavra ou pequena frase que necessita explicação
+- Conteúdo do tooltip deve ser curto e direto
+- Não repetir exatamente o texto visível
+- Evitar tooltips encadeados
+- Usar apenas quando realmente necessário
+- Ampliar compreensão, não substituir explicação principal","text: Texto do tooltip (obrigatório)
+content: Conteúdo do tooltip (obrigatório)","[tie_tooltip text=""API"" content=""Application Programming Interface: conjunto de padrões que permitem a comunicação entre sistemas.""]
+API
+[/tie_tooltip]"
+tie_tags,"Exibe uma nuvem de tags para exploração semântica e navegação não linear.","- Exploração semântica e navegação não linear
+- Site com volume consistente de conteúdo
+- Tags bem mantidas e significativas
+- Leitor pode querer explorar assuntos relacionados
+- Contexto de descoberta, não de instrução sequencial
+- Rodapé de posts
+- Páginas institucionais
+- Arquivos e hubs de conteúdo","- Em artigos muito curtos
+- Quando as tags são mal definidas
+- Em contextos altamente lineares (tutoriais passo a passo)","- Inserir em áreas de navegação, não no meio do texto
+- Limitar quantidade (`count`)
+- Usar tags semanticamente consistentes
+- Evitar duplicar função de categorias","count: Número máximo de tags (ex: 10)
+smallest: Tamanho mínimo da fonte (ex: 12)
+largest: Tamanho máximo da fonte (ex: 22)
+exclude: IDs de tags para excluir (ex: 5,10)","[tie_tags count=""10"" smallest=""12"" largest=""22"" exclude=""5,10""]"
+tie_highlight,"Destaca um trecho de texto dentro de um parágrafo para enfatizar conceitos-chave, sem quebrar o fluxo textual.","- Enfatizar conceitos-chave dentro de um parágrafo
+- Reforçar conceitos educacionais
+- Guiar a leitura em textos densos
+- Palavra ou expressão central para compreensão","- Em excesso no mesmo parágrafo
+- Para frases longas
+- Para chamar atenção sem propósito semântico","- Envolver apenas o trecho essencial
+- Usar com moderação
+- Preferir contraste suave
+- Não substituir headings ou boxes","type: Estilo de destaque (ex: yellow, gray, red)","[tie_highlight type=""yellow""]conceito-chave[/tie_highlight]"
+tie_divider,"Adiciona uma linha divisória para separar seções conceituais, melhorando a escaneabilidade.","- Separar seções conceituais
+- Mudança clara de assunto
+- Artigos longos
+- Melhorar escaneabilidade","- Entre parágrafos relacionados
+- Em textos curtos
+- Como substituto de headings","- Inserir isoladamente entre seções
+- Margens coerentes com o layout
+- Estilo consistente ao longo do artigo","style: Estilo da linha (ex: dashed, dotted, double)
+color: Cor da linha (ex: #ccc)","[tie_divider style=""dashed"" color=""#ccc""]"
+tie_list,"Cria listas estruturadas (ordenadas ou não ordenadas) para itens, passos, características ou critérios.","- Conteúdo que pode ser consumido de forma escaneável
+- Itens, passos, características ou critérios
+- Beneficia-se de visualização estruturada
+- Requisitos, checklists, benefícios, comparações","- Para conteúdo narrativo
+- Quando a ordem não é clara","- Envolver listas HTML (`<ul>`, `<ol>`) dentro do shortcode
+- Itens curtos e paralelos
+- Ícones coerentes com o significado
+- Evitar listas excessivamente longas","type: ordered (lista ordenada) ou unordered (padrão, não ordenada)
+icon: Ícone para itens (ex: fa-check)","[tie_list type=""unordered"" icon=""fa-check""]
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ul>
+[/tie_list]"
+tie_columns,"Cria um layout de colunas para comparar conceitos ou organizar conteúdo lado a lado.","- Comparação direta entre conceitos
+- Mostrar prós e contras
+- Organizar conteúdo visualmente
+- Conteúdo que se beneficia de disposição lado a lado","- Em textos densos
+- Para conteúdo linear
+- Em excesso em mobile","- Usar `tie_columns` como container e `tie_column` para cada bloco
+- Conteúdo equilibrado entre colunas
+- Evitar colunas muito longas
+- Garantir legibilidade em telas pequenas","columns: Número de colunas (ex: 2)
+class: Classe CSS adicional","[tie_columns columns=""2""]
+    [tie_column]Conteúdo da coluna 1[/tie_column]
+    [tie_column]Conteúdo da coluna 2[/tie_column]
+[/tie_columns]"
+tie_quote,"Destaca citações externas ou frases de impacto para reforçar autoridade ou ideias-chave.","- Citar autores
+- Reforçar autoridade
+- Destacar ideias-chave
+- Frases de impacto","- Para texto próprio sem intenção de citação
+- Para parágrafos longos","- Envolver apenas o texto citado
+- Informar autor quando possível
+- Usar estilo coerente com o tom do artigo","author: Nome do autor da citação
+cite: Fonte da citação (URL ou referência)","[tie_quote author=""Autor Exemplo"" cite=""https://exemplo.com""]
+Esta é uma citação importante.
+[/tie_quote]"
+tie_content_index,"Gera um índice automático com base nos headings do artigo, para navegação rápida em textos longos.","- Artigos longos e estruturados
+- Mais de 3–4 seções
+- Leitor pode querer navegar rapidamente
+- SEO e UX são prioridades","- Em artigos curtos
+- Sem hierarquia clara de headings","- Inserir no ponto onde o índice deve aparecer (geralmente após a introdução)
+- Garantir headings bem estruturados
+- Não repetir manualmente o índice","title: Título do índice (ex: Índice)
+depth: Profundidade dos headings (ex: 3 para até `<h3>`)","[tie_content_index title=""Índice do Artigo"" depth=""3""]"

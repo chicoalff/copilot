@@ -1,0 +1,1546 @@
+{
+  "metadata": {
+    "name": "Jannah Theme Shortcodes Dataset",
+    "description": "Conjunto estruturado de shortcodes do tema Jannah (TieLabs) para WordPress, com diretrizes de uso, exemplos e contextos semânticos. Otimizado para treinamento de modelos de IA em geração de conteúdo, UX writing e design editorial.",
+    "source": "https://jannah.helpscoutdocs.com/article/128-shortcodes",
+    "last_updated": "2026-01-14T00:00:00-03:00",
+    "version": "1.0",
+    "categories": [
+      {
+        "id": "content_structure",
+        "name": "Estrutura de Conteúdo",
+        "description": "Shortcodes para organizar, separar ou destacar partes do conteúdo com propósito semântico."
+      },
+      {
+        "id": "interactive_elements",
+        "name": "Elementos Interativos",
+        "description": "Componentes que incentivam ações ou interações do usuário."
+      },
+      {
+        "id": "text_enhancement",
+        "name": "Aprimoramento Textual",
+        "description": "Ferramentas para enfatizar, explicar ou estilizar trechos de texto."
+      },
+      {
+        "id": "navigation",
+        "name": "Navegação",
+        "description": "Recursos para melhorar a descoberta e fluxo de leitura."
+      }
+    ]
+  },
+  "shortcodes": [
+    {
+      "id": "tie_box",
+      "name": "Boxes",
+      "category": "content_structure",
+      "description": "Caixa visual para destacar informações com importância contextual, como alertas, notas ou downloads. Equivalente a 'callout boxes' em design editorial.",
+      "semantic_intent": [
+        "alerta",
+        "aviso",
+        "dica",
+        "nota editorial",
+        "pré-requisito",
+        "ressalva",
+        "risco",
+        "observação técnica"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Artigos técnicos",
+            "scenario": "Exceções, limitações ou avisos críticos (ex: 'Este método não funciona em PHP 5.6')",
+            "rationale": "Reduz risco de interpretação incorreta em conteúdo complexo."
+          },
+          {
+            "context": "Reviews ou análises",
+            "scenario": "Ressalvas importantes (ex: 'Produto não recomendado para iniciantes')",
+            "rationale": "Separa opinião editorial de descrição factual."
+          },
+          {
+            "context": "Tutoriais",
+            "scenario": "Pré-requisitos ou riscos (ex: 'Faça backup antes de prosseguir')",
+            "rationale": "Ancoragem cognitiva para informações de segurança."
+          },
+          {
+            "context": "Conteúdo educacional",
+            "scenario": "Diferenciar teoria de prática (ex: 'Na teoria X, mas na prática Y')",
+            "rationale": "Clareza pedagógica em textos densos."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Conteúdo comum",
+            "rationale": "Poluição visual e desvalorização do destaque."
+          },
+          {
+            "context": "Substituição de headings",
+            "rationale": "Quebra a hierarquia semântica do conteúdo."
+          },
+          {
+            "context": "Múltiplos boxes consecutivos",
+            "rationale": "Sobrecarga cognitiva e redução do impacto."
+          }
+        ],
+        "best_practices": [
+          "Escolher o `type` coerente com a intenção semântica (ex: 'warning' para riscos, 'info' para observações).",
+          "Usar `title` apenas quando o rótulo adiciona clareza (ex: 'Pré-requisitos').",
+          "Manter o texto interno conciso (máximo 3-4 linhas).",
+          "Evitar headings (`<h2>`, `<h3>`) dentro do box para preservar a hierarquia.",
+          "Inserir após o parágrafo que introduz o contexto, não antes."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_box type=\"{type}\" title=\"{title}\"]Conteúdo[/tie_box]",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "string",
+            "required": true,
+            "description": "Define o estilo e propósito semântico do box.",
+            "values": [
+              {
+                "value": "warning",
+                "description": "Alerta crítico (ex: riscos, erros). Cor: vermelho/laranja.",
+                "semantic_tags": ["risco", "erro", "perigo"]
+              },
+              {
+                "value": "error",
+                "description": "Erros ou falhas (ex: mensagens de sistema). Cor: vermelho.",
+                "semantic_tags": ["falha", "problema"]
+              },
+              {
+                "value": "info",
+                "description": "Informações adicionais ou observações. Cor: azul.",
+                "semantic_tags": ["observação", "nota"]
+              },
+              {
+                "value": "tip",
+                "description": "Dicas ou sugestões. Cor: verde.",
+                "semantic_tags": ["dica", "sugestão"]
+              },
+              {
+                "value": "download",
+                "description": "Links para downloads. Cor: azul escuro.",
+                "semantic_tags": ["material", "arquivo"]
+              },
+              {
+                "value": "note",
+                "description": "Notas editoriais ou observações do autor. Cor: cinza.",
+                "semantic_tags": ["autor", "editorial"]
+              }
+            ]
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "Título opcional para o box. Útil para rotular o tipo de informação (ex: 'Pré-requisitos')."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "required": false,
+            "description": "Ícone Font Awesome (ex: 'fa-exclamation-triangle'). Deve reforçar o significado semântico.",
+            "examples": ["fa-download", "fa-info-circle", "fa-exclamation-triangle"]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Alerta crítico em tutorial de programação.",
+          "code": "[tie_box type=\"warning\" title=\"Atenção\"]Este método não é compatível com versões do PHP anteriores a 7.0. Verifique sua versão antes de prosseguir.[/tie_box]",
+          "context": {
+            "content_type": "tutorial",
+            "audience": "desenvolvedores",
+            "intent": "prevenir erros"
+          }
+        },
+        {
+          "description": "Dica em artigo de produtividade.",
+          "code": "[tie_box type=\"tip\"]Use a técnica Pomodoro para manter o foco durante tarefas longas.[/tie_box]",
+          "context": {
+            "content_type": "artigo",
+            "audience": "profissionais",
+            "intent": "sugestão prática"
+          }
+        },
+        {
+          "description": "Nota editorial em review de produto.",
+          "code": "[tie_box type=\"note\" title=\"Opinião do autor\"]Embora o produto tenha ótimos recursos, o suporte ao cliente é lento.[/tie_box]",
+          "context": {
+            "content_type": "review",
+            "audience": "consumidores",
+            "intent": "transparência"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Boxes devem ter contraste suficiente entre texto e fundo (WCAG 2.1 AA).",
+        "Evitar usar apenas cor para transmitir significado (ex: incluir ícones ou rótulos).",
+        "Testar com leitores de tela para garantir que o `type` seja anunciado corretamente (ex: 'Alerta:')."
+      ],
+      "seo_considerations": [
+        "Boxes podem diluir a densidade de palavras-chave se usados em excesso.",
+        "Conteúdo crítico para SEO (ex: definições) deve estar no corpo do texto, não apenas no box.",
+        "Usar `title` para incluir palavras-chave relevantes quando apropriado."
+      ]
+    },
+    {
+      "id": "tie_button",
+      "name": "Buttons",
+      "category": "interactive_elements",
+      "description": "Botão estilizado para direcionar o usuário a ações específicas, como downloads, cadastros ou páginas relacionadas. Diferencia-se de links comuns por comunicar intenção clara e prioridade.",
+      "semantic_intent": [
+        "ação",
+        "conversão",
+        "continuidade",
+        "desdobramento",
+        "chamada para ação (CTA)"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Artigos com objetivo de conversão",
+            "scenario": "Botão 'Baixar E-book' após explicar os benefícios do material.",
+            "rationale": "Reduz atrito para a ação principal."
+          },
+          {
+            "context": "Séries de conteúdo",
+            "scenario": "Botão 'Ler Parte 2' no final de um artigo sequencial.",
+            "rationale": "Incentiva engajamento contínuo."
+          },
+          {
+            "context": "Tutoriais ou guias",
+            "scenario": "Botão 'Acessar Ferramenta' após descrever uma solução.",
+            "rationale": "Facilita a aplicação prática."
+          },
+          {
+            "context": "Páginas institucionais",
+            "scenario": "Botão 'Fale Conosco' em seção de contato.",
+            "rationale": "Prioriza ação de comunicação."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Dentro de parágrafos corridos",
+            "rationale": "Quebra a fluidez de leitura e parece deslocado."
+          },
+          {
+            "context": "Links de baixa relevância",
+            "rationale": "Dilui a importância dos botões principais."
+          },
+          {
+            "context": "Múltiplos botões na mesma seção",
+            "rationale": "Cria paralisia de escolha e reduz taxas de cliques."
+          }
+        ],
+        "best_practices": [
+          "Texto do botão deve ser **verbo + ação clara** (ex: 'Baixar Agora', 'Saiba Mais').",
+          "Destino (`url`) deve ser previsível (ex: evitar 'Clique Aqui').",
+          "Usar `target=\"_blank\"` apenas para links externos que não interrompem o fluxo (ex: referências).",
+          "Ícones devem reforçar o significado (ex: `fa-download` para downloads).",
+          "Posicionar após uma conclusão ou resumo para maximizar conversões.",
+          "Manter consistência visual com a identidade da marca (cores, estilos)."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_button url=\"{url}\" style=\"{style}\" color=\"{color}\"]Texto do Botão[/tie_button]",
+        "parameters": [
+          {
+            "name": "url",
+            "type": "string",
+            "required": true,
+            "description": "URL de destino do botão. Pode ser relativa ou absoluta.",
+            "examples": ["/pagina-interna", "https://exemplo.com"]
+          },
+          {
+            "name": "target",
+            "type": "string",
+            "required": false,
+            "description": "Define se o link abre em nova aba.",
+            "values": [
+              {
+                "value": "_self",
+                "description": "Abre na mesma aba (padrão)."
+              },
+              {
+                "value": "_blank",
+                "description": "Abre em nova aba. Usar com moderação."
+              }
+            ]
+          },
+          {
+            "name": "style",
+            "type": "string",
+            "required": false,
+            "description": "Estilo visual do botão.",
+            "values": [
+              {
+                "value": "flat",
+                "description": "Botão plano (padrão). Ideal para designs minimalistas."
+              },
+              {
+                "value": "outline",
+                "description": "Borda sem preenchimento. Usado para ações secundárias."
+              },
+              {
+                "value": "3d",
+                "description": "Efeito 3D. Evitar em designs modernos."
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "required": false,
+            "description": "Cor do botão. Deve seguir a paleta da marca.",
+            "examples": ["blue", "green", "red", "orange", "#3498db"]
+          },
+          {
+            "name": "size",
+            "type": "string",
+            "required": false,
+            "description": "Tamanho do botão.",
+            "values": [
+              {
+                "value": "small",
+                "description": "Botões secundários ou em espaços reduzidos."
+              },
+              {
+                "value": "medium",
+                "description": "Tamanho padrão (recomendado)."
+              },
+              {
+                "value": "large",
+                "description": "Botões de alta prioridade (ex: CTAs principais)."
+              }
+            ]
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "required": false,
+            "description": "Ícone Font Awesome à esquerda do texto.",
+            "examples": ["fa-download", "fa-arrow-right", "fa-envelope"]
+          },
+          {
+            "name": "class",
+            "type": "string",
+            "required": false,
+            "description": "Classe CSS adicional para personalização avançada."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Botão de download em artigo sobre marketing digital.",
+          "code": "[tie_button url=\"/download/guia-marketing\" style=\"flat\" color=\"green\" size=\"large\" icon=\"fa-download\"]Baixar Guia Gratuito[/tie_button]",
+          "context": {
+            "content_type": "artigo",
+            "audience": "profissionais de marketing",
+            "intent": "conversão",
+            "placement": "final do artigo"
+          },
+          "variations": [
+            {
+              "description": "Versão com estilo outline para ação secundária.",
+              "code": "[tie_button url=\"/blog\" style=\"outline\" color=\"blue\"]Ver Mais Artigos[/tie_button]"
+            }
+          ]
+        },
+        {
+          "description": "Botão de cadastro em landing page.",
+          "code": "[tie_button url=\"#cadastro\" style=\"flat\" color=\"#e74c3c\" size=\"large\"]Quero Me Cadastrar[/tie_button]",
+          "context": {
+            "content_type": "landing page",
+            "audience": "visitantes",
+            "intent": "lead generation",
+            "placement": "acima da dobra"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Botões devem ter contraste mínimo de 4.5:1 entre texto e fundo (WCAG 2.1).",
+        "Usar `aria-label` para botões com ícones sem texto (ex: `[tie_button url=\"#\" icon=\"fa-envelope\" aria-label=\"Enviar Email\"]`).",
+        "Garantir que o foco seja visível para navegação por teclado."
+      ],
+      "seo_considerations": [
+        "Texto do botão deve incluir palavras-chave relevantes quando possível (ex: 'Baixar E-book de SEO').",
+        "Evitar redirecionamentos desnecessários no destino do botão.",
+        "Usar `rel=\"nofollow\"` para links de afiliados ou patrocinados."
+      ]
+    },
+    {
+      "id": "tie_tooltip",
+      "name": "Tooltip",
+      "category": "text_enhancement",
+      "description": "Explicação em balão que aparece ao passar o mouse sobre um termo ou frase, sem interromper o fluxo de leitura. Ideal para glossários inline ou esclarecimentos rápidos.",
+      "semantic_intent": [
+        "explicação",
+        "definição",
+        "esclarecimento",
+        "glossário",
+        "jargão",
+        "sigla",
+        "conceito técnico"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Artigos técnicos",
+            "scenario": "Explicar siglas como 'API' ou termos como 'Webhook'.",
+            "rationale": "Reduz a necessidade de links externos ou notas de rodapé."
+          },
+          {
+            "context": "Conteúdo para múltiplos níveis de conhecimento",
+            "scenario": "Definir 'UX Design' para leigos em um artigo para profissionais.",
+            "rationale": "Amplia a acessibilidade sem simplificar o conteúdo principal."
+          },
+          {
+            "context": "Glossários inline",
+            "scenario": "Explicar termos específicos de um domínio (ex: 'Blockchain' em artigo sobre criptomoedas).",
+            "rationale": "Mantém o foco no texto principal."
+          },
+          {
+            "context": "Conteúdo educacional",
+            "scenario": "Esclarecer conceitos ambíguos (ex: 'O que é 'dark pattern'?').",
+            "rationale": "Evita desviar o leitor para outras páginas."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Dispositivos móveis (sem hover)",
+            "rationale": "Conteúdo crítico pode ficar inacessível."
+          },
+          {
+            "context": "Textos longos no tooltip",
+            "rationale": "Dificulta a leitura e quebra a experiência."
+          },
+          {
+            "context": "Informações obrigatórias para compreensão",
+            "rationale": "Deve estar no corpo do texto para garantir visibilidade."
+          },
+          {
+            "context": "Tooltips encadeados",
+            "rationale": "Sobrecarga cognitiva e experiência confusa."
+          }
+        ],
+        "best_practices": [
+          "Manter o conteúdo do tooltip curto (máximo 2 linhas).",
+          "Não repetir o texto visível (ex: tooltip 'API' com conteúdo 'API significa...').",
+          "Usar linguagem simples e direta.",
+          "Evitar tooltips em palavras comuns (ex: 'clique').",
+          "Testar em dispositivos móveis para garantir que o conteúdo seja acessível via toque."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_tooltip text=\"{text}\" content=\"{content}\"]Termo[/tie_tooltip]",
+        "parameters": [
+          {
+            "name": "text",
+            "type": "string",
+            "required": true,
+            "description": "Texto visível que acionará o tooltip (ex: 'API')."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "required": true,
+            "description": "Conteúdo do tooltip que será exibido ao passar o mouse."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Explicação de sigla em artigo técnico.",
+          "code": "[tie_tooltip text=\"API\" content=\"Application Programming Interface: conjunto de padrões que permitem a comunicação entre sistemas.\"]API[/tie_tooltip] é essencial para integrações modernas.",
+          "context": {
+            "content_type": "artigo técnico",
+            "audience": "desenvolvedores",
+            "intent": "esclarecimento"
+          },
+          "variations": [
+            {
+              "description": "Tooltip com exemplo prático.",
+              "code": "[tie_tooltip text=\"Webhook\" content=\"Método para receber notificações em tempo real de um sistema externo (ex: quando um pagamento é confirmado).\"]Webhooks[/tie_tooltip] são usados para automações."
+            }
+          ]
+        },
+        {
+          "description": "Definição de jargão em artigo para iniciantes.",
+          "code": "O [tie_tooltip text=\"UX Design\" content=\"User Experience Design: disciplina que foca na experiência do usuário com um produto ou serviço.\"]UX Design[/tie_tooltip] é fundamental para produtos digitais.",
+          "context": {
+            "content_type": "artigo introdutório",
+            "audience": "iniciantes",
+            "intent": "educação"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Tooltips devem ser acessíveis via teclado (foco + tecla Enter).",
+        "Fornecer alternativa para dispositivos sem hover (ex: botão '?' que exibe o conteúdo).",
+        "Garantir que o contraste do tooltip seja suficiente (fundo escuro com texto claro ou vice-versa)."
+      ],
+      "seo_considerations": [
+        "O texto visível (`text`) deve conter palavras-chave relevantes quando possível.",
+        "Evitar esconder conteúdo crítico para SEO no tooltip.",
+        "Usar tooltips para termos que não são o foco principal do conteúdo."
+      ]
+    },
+    {
+      "id": "tie_tags",
+      "name": "Tags Cloud",
+      "category": "navigation",
+      "description": "Nuvem de tags para exploração semântica de conteúdo relacionado. As tags são exibidas em tamanhos proporcionais à sua frequência ou relevância.",
+      "semantic_intent": [
+        "descoberta",
+        "navegação não linear",
+        "relacionamento de conteúdo",
+        "exploração semântica"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Sites com volume consistente de conteúdo",
+            "scenario": "Nuvem de tags no rodapé de posts de um blog.",
+            "rationale": "Incentiva a descoberta de conteúdo relacionado."
+          },
+          {
+            "context": "Páginas institucionais ou hubs de conteúdo",
+            "scenario": "Tags em uma página 'Recursos' para categorizar materiais.",
+            "rationale": "Melhora a organização e navegação."
+          },
+          {
+            "context": "Arquivos ou categorias",
+            "scenario": "Tags em uma página 'Arquivo por Tópico'.",
+            "rationale": "Permite filtragem por assuntos específicos."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Artigos muito curtos",
+            "rationale": "Falta de contexto para exploração adicional."
+          },
+          {
+            "context": "Tags mal definidas ou inconsistentes",
+            "rationale": "Navegação confusa e experiência negativa."
+          },
+          {
+            "context": "Conteúdo altamente linear",
+            "scenario": "Tutoriais passo a passo.",
+            "rationale": "Quebra a sequência lógica de aprendizado."
+          }
+        ],
+        "best_practices": [
+          "Limitar o número de tags exibidas (`count`) para evitar poluição visual.",
+          "Usar tags semanticamente consistentes (evitar sinônimos como 'SEO' e 'Otimização').",
+          "Priorizar tags que representam temas centrais do site.",
+          "Evitar duplicar a função de categorias (tags devem ser mais específicas).",
+          "Atualizar regularmente as tags para refletir novos conteúdos."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_tags count=\"{count}\" smallest=\"{smallest}\" largest=\"{largest}\"]",
+        "parameters": [
+          {
+            "name": "count",
+            "type": "integer",
+            "required": false,
+            "description": "Número máximo de tags a serem exibidas. Padrão: todas as tags.",
+            "examples": [5, 10, 20]
+          },
+          {
+            "name": "smallest",
+            "type": "integer",
+            "required": false,
+            "description": "Tamanho mínimo da fonte das tags (em pixels). Padrão: 12.",
+            "examples": [10, 12, 14]
+          },
+          {
+            "name": "largest",
+            "type": "integer",
+            "required": false,
+            "description": "Tamanho máximo da fonte das tags (em pixels). Padrão: 22.",
+            "examples": [20, 22, 24]
+          },
+          {
+            "name": "exclude",
+            "type": "string",
+            "required": false,
+            "description": "IDs de tags a serem excluídas (separadas por vírgula).",
+            "examples": ["5,10", "1,2,3"]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Nuvem de tags em rodapé de post de blog.",
+          "code": "[tie_tags count=\"10\" smallest=\"12\" largest=\"22\"]",
+          "context": {
+            "content_type": "blog post",
+            "audience": "leitores regulares",
+            "intent": "descoberta de conteúdo",
+            "placement": "rodapé"
+          },
+          "variations": [
+            {
+              "description": "Nuvem com tags específicas excluídas.",
+              "code": "[tie_tags count=\"8\" exclude=\"5,10\"]"
+            }
+          ]
+        },
+        {
+          "description": "Nuvem de tags em página de recursos.",
+          "code": "[tie_tags count=\"15\" smallest=\"10\" largest=\"20\"]",
+          "context": {
+            "content_type": "página institucional",
+            "audience": "visitantes",
+            "intent": "navegação",
+            "placement": "seção 'Explore por Tópico'"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Garantir que as tags tenham contraste suficiente com o fundo.",
+        "Fornecer alternativa textual para navegação (ex: lista de tags abaixo da nuvem).",
+        "Evitar tamanhos de fonte muito pequenos para tags menos relevantes."
+      ],
+      "seo_considerations": [
+        "Tags devem conter palavras-chave relevantes para o conteúdo do site.",
+        "Evitar tags genéricas (ex: 'dicas', 'artigo') que não agregam valor semântico.",
+        "Usar tags para fortalecer a estrutura de tópicos do site (topic clusters)."
+      ]
+    },
+    {
+      "id": "tie_highlight",
+      "name": "Highlight Text",
+      "category": "text_enhancement",
+      "description": "Destaca um trecho de texto dentro de um parágrafo para enfatizar conceitos-chave, sem quebrar o fluxo de leitura. Similar a marca-texto em documentos físicos.",
+      "semantic_intent": [
+        "ênfase",
+        "conceito-chave",
+        "guia de leitura",
+        "destaque semântico",
+        "memorização"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Textos densos ou técnicos",
+            "scenario": "Destacar termos como 'machine learning' em um artigo sobre IA.",
+            "rationale": "Guia a atenção para conceitos centrais."
+          },
+          {
+            "context": "Conteúdo educacional",
+            "scenario": "Enfatizar definições ou princípios (ex: 'O princípio de Pareto: 80/20').",
+            "rationale": "Facilita a memorização e revisão."
+          },
+          {
+            "context": "Artigos com múltiplos argumentos",
+            "scenario": "Destacar a tese principal ou conclusão.",
+            "rationale": "Reforça a mensagem central."
+          },
+          {
+            "context": "Listas de benefícios ou características",
+            "scenario": "Enfatizar o benefício mais importante (ex: 'Economia de tempo').",
+            "rationale": "Prioriza informações para leitores escaneando o conteúdo."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Em excesso no mesmo parágrafo",
+            "rationale": "Dilui o impacto e polui visualmente."
+          },
+          {
+            "context": "Frases longas",
+            "rationale": "Dificulta a leitura e quebra a fluidez."
+          },
+          {
+            "context": "Chamar atenção sem propósito semântico",
+            "rationale": "Deve ter valor informativo, não apenas decorativo."
+          },
+          {
+            "context": "Substituir headings ou boxes",
+            "rationale": "Não é adequado para separar seções ou alertas."
+          }
+        ],
+        "best_practices": [
+          "Usar com moderação (máximo 1-2 destaques por parágrafo).",
+          "Preferir contraste suave (ex: amarelo claro) para não cansar a leitura.",
+          "Destacar apenas palavras ou frases curtas (máximo 3-4 palavras).",
+          "Manter consistência no estilo de destaque ao longo do conteúdo.",
+          "Evitar destacar palavras comuns (ex: 'clique', 'aqui')."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_highlight type=\"{type}\"]Texto destacado[/tie_highlight]",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "string",
+            "required": false,
+            "description": "Estilo de destaque. Padrão: amarelo claro.",
+            "values": [
+              {
+                "value": "yellow",
+                "description": "Destaque amarelo (padrão). Ideal para conceitos-chave."
+              },
+              {
+                "value": "gray",
+                "description": "Destaque cinza. Usado para ênfase secundária."
+              },
+              {
+                "value": "red",
+                "description": "Destaque vermelho. Usar com moderação para alertas."
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Destaque de conceito-chave em artigo sobre produtividade.",
+          "code": "A técnica [tie_highlight type=\"yellow\"]Pomodoro[/tie_highlight] divide o trabalho em blocos de 25 minutos.",
+          "context": {
+            "content_type": "artigo",
+            "audience": "profissionais",
+            "intent": "ênfase educacional"
+          },
+          "variations": [
+            {
+              "description": "Destaque com estilo cinza para ênfase secundária.",
+              "code": "O [tie_highlight type=\"gray\"]princípio de Pareto[/tie_highlight] sugere que 80% dos resultados vêm de 20% dos esforços."
+            }
+          ]
+        },
+        {
+          "description": "Enfatizar benefício em lista de características.",
+          "code": "- [tie_highlight]Economia de tempo[/tie_highlight] com automação de tarefas.",
+          "context": {
+            "content_type": "lista de benefícios",
+            "audience": "usuários de software",
+            "intent": "priorização"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Garantir contraste mínimo de 3:1 entre o texto destacado e o fundo (WCAG 2.1).",
+        "Evitar cores que dificultem a leitura para daltônicos (ex: vermelho/verde).",
+        "Não usar apenas cor para transmitir significado (ex: combinar com negrito)."
+      ],
+      "seo_considerations": [
+        "Palavras destacadas podem ter peso ligeiramente maior para SEO, mas não devem ser abusadas.",
+        "Evitar destacar palavras-chave apenas para manipular rankings (keyword stuffing).",
+        "Usar para termos que são relevantes para a intenção de busca do conteúdo."
+      ]
+    },
+    {
+      "id": "tie_divider",
+      "name": "Divider Line",
+      "category": "content_structure",
+      "description": "Linha horizontal para separar seções conceituais de um artigo, melhorando a escaneabilidade e hierarquia visual.",
+      "semantic_intent": [
+        "separação de seções",
+        "hierarquia visual",
+        "escaneabilidade",
+        "transição de tópicos"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Artigos longos ou com múltiplas seções",
+            "scenario": "Separar introdução, desenvolvimento e conclusão.",
+            "rationale": "Melhora a legibilidade e organização."
+          },
+          {
+            "context": "Mudança clara de assunto",
+            "scenario": "Transição de 'O que é X' para 'Como usar X'.",
+            "rationale": "Sinaliza ao leitor que um novo tópico está começando."
+          },
+          {
+            "context": "Conteúdo com subseções",
+            "scenario": "Separar 'Prós' e 'Contras' em uma análise.",
+            "rationale": "Clareza na comparação de ideias."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Entre parágrafos relacionados",
+            "rationale": "Quebra o fluxo de leitura desnecessariamente."
+          },
+          {
+            "context": "Textos curtos (menos de 3 parágrafos)",
+            "rationale": "Não há necessidade de separação visual."
+          },
+          {
+            "context": "Como substituto de headings",
+            "rationale": "Headings (`<h2>`, `<h3>`) são semanticamente mais adequados para hierarquia."
+          }
+        ],
+        "best_practices": [
+          "Usar com moderação (1-2 divisores por artigo médio).",
+          "Manter estilo consistente ao longo do conteúdo.",
+          "Garantir que a linha tenha contraste suficiente com o fundo.",
+          "Evitar estilos muito chamativos (ex: linhas duplas grossas).",
+          "Posicionar após um heading para reforçar a separação de seções."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_divider style=\"{style}\" color=\"{color}\"]",
+        "parameters": [
+          {
+            "name": "style",
+            "type": "string",
+            "required": false,
+            "description": "Estilo da linha. Padrão: sólida.",
+            "values": [
+              {
+                "value": "solid",
+                "description": "Linha sólida (padrão)."
+              },
+              {
+                "value": "dashed",
+                "description": "Linha tracejada. Usada para separações menos formais."
+              },
+              {
+                "value": "dotted",
+                "description": "Linha pontilhada. Usada para transições suaves."
+              },
+              {
+                "value": "double",
+                "description": "Linha dupla. Usada para separações mais marcantes."
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "required": false,
+            "description": "Cor da linha. Padrão: cinza claro (#ccc).",
+            "examples": ["#ddd", "#3498db", "rgba(0,0,0,0.1)"]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Divisor padrão entre seções de um artigo.",
+          "code": "[tie_divider]",
+          "context": {
+            "content_type": "artigo longo",
+            "audience": "leitores gerais",
+            "intent": "separação de tópicos",
+            "placement": "entre headings `<h2>`"
+          },
+          "variations": [
+            {
+              "description": "Divisor tracejado para transição suave.",
+              "code": "[tie_divider style=\"dashed\" color=\"#ddd\"]"
+            }
+          ]
+        },
+        {
+          "description": "Divisor entre prós e contras em uma análise.",
+          "code": "[tie_divider style=\"solid\" color=\"#3498db\"]",
+          "context": {
+            "content_type": "análise comparativa",
+            "audience": "consumidores",
+            "intent": "separação de argumentos"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Garantir que a linha tenha contraste mínimo de 3:1 com o fundo (WCAG 2.1).",
+        "Evitar linhas muito finas que possam ser difíceis de ver.",
+        "Não usar divisores como único meio de separação (combinar com headings)."
+      ],
+      "seo_considerations": [
+        "Divisores não têm impacto direto em SEO, mas melhoram a experiência do usuário, o que pode reduzir a taxa de rejeição.",
+        "Usar em conjunto com headings bem estruturados para melhorar a hierarquia semântica."
+      ]
+    },
+    {
+      "id": "tie_list",
+      "name": "Lists",
+      "category": "content_structure",
+      "description": "Cria listas estruturadas (ordenadas ou não ordenadas) para apresentar itens, passos, características ou critérios de forma escaneável e organizada.",
+      "semantic_intent": [
+        "organização",
+        "escaneabilidade",
+        "passos",
+        "características",
+        "critérios",
+        "comparação",
+        "checklist"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Conteúdo que pode ser consumido de forma não linear",
+            "scenario": "Listar benefícios de um produto ou requisitos de um tutorial.",
+            "rationale": "Facilita a leitura rápida e comparação de itens."
+          },
+          {
+            "context": "Passos ou instruções sequenciais",
+            "scenario": "Tutorial com etapas numeradas.",
+            "rationale": "Clareza na ordem de execução."
+          },
+          {
+            "context": "Comparação de características",
+            "scenario": "Lista de prós e contras de uma solução.",
+            "rationale": "Estrutura visual para análise lado a lado."
+          },
+          {
+            "context": "Checklists ou requisitos",
+            "scenario": "Lista de itens necessários para um projeto.",
+            "rationale": "Organização clara de informações obrigatórias."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Conteúdo narrativo ou descritivo",
+            "rationale": "Quebra a fluidez da história ou argumentação."
+          },
+          {
+            "context": "Quando a ordem não é clara ou relevante",
+            "rationale": "Listas ordenadas (`<ol>`) devem ter sequência lógica."
+          },
+          {
+            "context": "Listas com itens muito longos",
+            "rationale": "Dificulta a escaneabilidade e compreensão."
+          }
+        ],
+        "best_practices": [
+          "Manter itens curtos e paralelos (mesma estrutura gramatical).",
+          "Usar listas ordenadas (`<ol>`) para passos sequenciais e não ordenadas (`<ul>`) para itens sem ordem específica.",
+          "Adicionar ícones apenas quando reforçam o significado (ex: `fa-check` para itens concluídos).",
+          "Evitar listas excessivamente longas (máximo 7-10 itens).",
+          "Usar negrito ou destaque para palavras-chave dentro dos itens quando apropriado."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_list type=\"{type}\" icon=\"{icon}\"]<ul> ou <ol>...</tie_list]",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "string",
+            "required": false,
+            "description": "Tipo de lista. Padrão: não ordenada (`unordered`).",
+            "values": [
+              {
+                "value": "unordered",
+                "description": "Lista não ordenada (`<ul>`). Itens com marcadores."
+              },
+              {
+                "value": "ordered",
+                "description": "Lista ordenada (`<ol>`). Itens numerados."
+              }
+            ]
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "required": false,
+            "description": "Ícone Font Awesome para substituir os marcadores padrão.",
+            "examples": ["fa-check", "fa-arrow-right", "fa-circle"]
+          }
+        ],
+        "html_structure": {
+          "unordered": "<ul><li>Item 1</li><li>Item 2</li></ul>",
+          "ordered": "<ol><li>Passo 1</li><li>Passo 2</li></ol>"
+        }
+      },
+      "examples": [
+        {
+          "description": "Lista de benefícios em página de produto.",
+          "code": "[tie_list type=\"unordered\" icon=\"fa-check\"]\n<ul>\n    <li>Economia de tempo com automação</li>\n    <li>Integração com ferramentas populares</li>\n    <li>Suporte 24/7</li>\n</ul>\n[/tie_list]",
+          "context": {
+            "content_type": "página de produto",
+            "audience": "potenciais clientes",
+            "intent": "destaque de benefícios"
+          },
+          "variations": [
+            {
+              "description": "Lista ordenada para tutorial.",
+              "code": "[tie_list type=\"ordered\"]\n<ol>\n    <li>Faça o download do arquivo</li>\n    <li>Extraia o conteúdo para uma pasta</li>\n    <li>Abra o terminal e execute o comando</li>\n</ol>\n[/tie_list]"
+            }
+          ]
+        },
+        {
+          "description": "Checklist de requisitos para um curso.",
+          "code": "[tie_list type=\"unordered\" icon=\"fa-circle\"]\n<ul>\n    <li>Conhecimento básico de HTML</li>\n    <li>Computador com acesso à internet</li>\n    <li>Conta no GitHub (gratuita)</li>\n</ul>\n[/tie_list]",
+          "context": {
+            "content_type": "página de curso",
+            "audience": "alunos em potencial",
+            "intent": "pré-requisitos"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Garantir que listas sejam anunciadas corretamente por leitores de tela (ex: 'Lista com 3 itens').",
+        "Usar ícones com texto alternativo ou garantir que não sejam o único meio de informação.",
+        "Manter consistência no estilo de marcadores para evitar confusão."
+      ],
+      "seo_considerations": [
+        "Listas melhoram a escaneabilidade, o que pode reduzir a taxa de rejeição e melhorar o tempo de permanência.",
+        "Usar palavras-chave relevantes nos itens da lista.",
+        "Listas ordenadas podem ser úteis para conteúdo de 'como fazer' (how-to), que é favorecido pelo Google."
+      ]
+    },
+    {
+      "id": "tie_columns",
+      "name": "Columns",
+      "category": "content_structure",
+      "description": "Cria um layout de colunas para organizar conteúdo lado a lado, ideal para comparações, prós/contras ou disposição visual de informações relacionadas.",
+      "semantic_intent": [
+        "comparação",
+        "disposição visual",
+        "organização lado a lado",
+        "prós e contras",
+        "dualidade de informações"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Comparação direta entre conceitos",
+            "scenario": "Comparar recursos de dois produtos.",
+            "rationale": "Facilita a análise lado a lado."
+          },
+          {
+            "context": "Mostrar prós e contras",
+            "scenario": "Lista de vantagens e desvantagens de uma solução.",
+            "rationale": "Estrutura visual clara para tomada de decisão."
+          },
+          {
+            "context": "Organizar conteúdo relacionado",
+            "scenario": "Texto principal à esquerda e imagem/legenda à direita.",
+            "rationale": "Melhora a legibilidade e fluxo visual."
+          },
+          {
+            "context": "Destacar informações complementares",
+            "scenario": "Definição à esquerda e exemplo à direita.",
+            "rationale": "Contexto imediato para melhor compreensão."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Textos densos ou longos",
+            "rationale": "Dificulta a leitura em colunas estreitas."
+          },
+          {
+            "context": "Conteúdo linear ou narrativo",
+            "rationale": "Quebra a fluidez da história ou argumentação."
+          },
+          {
+            "context": "Excesso de colunas em dispositivos móveis",
+            "rationale": "Pode resultar em colunas muito estreitas e ilegíveis."
+          },
+          {
+            "context": "Substituir listas ou tabelas",
+            "rationale": "Listas e tabelas são semanticamente mais adequadas para dados estruturados."
+          }
+        ],
+        "best_practices": [
+          "Manter o conteúdo equilibrado entre as colunas (evitar colunas muito desiguais).",
+          "Usar no máximo 2-3 colunas para garantir legibilidade em todos os dispositivos.",
+          "Garantir que o conteúdo faça sentido mesmo se as colunas forem empilhadas em mobile.",
+          "Evitar colunas muito longas (máximo 10-15 linhas por coluna).",
+          "Usar `tie_columns` como container e `tie_column` para cada bloco de conteúdo."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_columns columns=\"{columns}\"]\n    [tie_column]Conteúdo da coluna 1[/tie_column]\n    [tie_column]Conteúdo da coluna 2[/tie_column]\n[/tie_columns]",
+        "parameters": [
+          {
+            "name": "columns",
+            "type": "integer",
+            "required": false,
+            "description": "Número de colunas. Padrão: 2.",
+            "examples": [2, 3]
+          },
+          {
+            "name": "class",
+            "type": "string",
+            "required": false,
+            "description": "Classe CSS adicional para personalização."
+          }
+        ],
+        "inner_shortcode": {
+          "name": "tie_column",
+          "description": "Define o conteúdo de uma coluna. Deve ser usado dentro de `tie_columns`."
+        }
+      },
+      "examples": [
+        {
+          "description": "Comparação de prós e contras de um produto.",
+          "code": "[tie_columns columns=\"2\"]\n    [tie_column]\n        <h3>Prós</h3>\n        <ul>\n            <li>Fácil de usar</li>\n            <li>Integrações nativas</li>\n        </ul>\n    [/tie_column]\n    [tie_column]\n        <h3>Contras</h3>\n        <ul>\n            <li>Preço elevado</li>\n            <li>Curva de aprendizado</li>\n        </ul>\n    [/tie_column]\n[/tie_columns]",
+          "context": {
+            "content_type": "review de produto",
+            "audience": "consumidores",
+            "intent": "comparação"
+          },
+          "variations": [
+            {
+              "description": "Três colunas para comparação de produtos.",
+              "code": "[tie_columns columns=\"3\"]\n    [tie_column]Produto A[/tie_column]\n    [tie_column]Produto B[/tie_column]\n    [tie_column]Produto C[/tie_column]\n[/tie_columns]"
+            }
+          ]
+        },
+        {
+          "description": "Definição e exemplo lado a lado.",
+          "code": "[tie_columns]\n    [tie_column]\n        <h3>O que é UX Design?</h3>\n        <p>User Experience Design é a disciplina que foca na experiência do usuário com um produto ou serviço.</p>\n    [/tie_column]\n    [tie_column]\n        <h3>Exemplo</h3>\n        <p>Um botão 'Comprar' bem posicionado em um e-commerce melhora a experiência de compra.</p>\n    [/tie_column]\n[/tie_columns]",
+          "context": {
+            "content_type": "artigo educacional",
+            "audience": "iniciantes",
+            "intent": "explicação visual"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Garantir que o conteúdo seja lido em ordem lógica por leitores de tela (coluna 1 → coluna 2).",
+        "Evitar colunas com larguras muito diferentes, o que pode confundir usuários com deficiência visual.",
+        "Testar em dispositivos móveis para garantir que o conteúdo seja legível quando as colunas são empilhadas."
+      ],
+      "seo_considerations": [
+        "Conteúdo em colunas pode diluir a densidade de palavras-chave se não for bem estruturado.",
+        "Usar headings (`<h2>`, `<h3>`) dentro das colunas para manter a hierarquia semântica.",
+        "Evitar esconder conteúdo importante em colunas estreitas que podem ser ignoradas por crawlers."
+      ]
+    },
+    {
+      "id": "tie_quote",
+      "name": "Quote",
+      "category": "content_structure",
+      "description": "Bloco estilizado para destacar citações externas, frases de impacto ou depoimentos, reforçando autoridade ou ênfase.",
+      "semantic_intent": [
+        "citação",
+        "autoridade",
+        "depoimento",
+        "frase de impacto",
+        "ênfase retórica"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Citar autores ou fontes externas",
+            "scenario": "Frase de um especialista em um artigo técnico.",
+            "rationale": "Reforça a credibilidade do conteúdo."
+          },
+          {
+            "context": "Destacar ideias-chave",
+            "scenario": "Frase central de um artigo para resumir a mensagem.",
+            "rationale": "Ancoragem cognitiva para o leitor."
+          },
+          {
+            "context": "Depoimentos ou testemunhos",
+            "scenario": "Citação de um cliente em uma página de produto.",
+            "rationale": "Prova social para conversão."
+          },
+          {
+            "context": "Frases de impacto em conteúdo motivacional",
+            "scenario": "Citação inspiradora em um artigo sobre produtividade.",
+            "rationale": "Reforça a mensagem emocional."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Texto próprio sem intenção de citação",
+            "rationale": "Deve ser usado apenas para conteúdo externo ou destacado."
+          },
+          {
+            "context": "Parágrafos longos",
+            "rationale": "Quebra a estrutura visual e dificulta a leitura."
+          },
+          {
+            "context": "Substituir headings ou boxes",
+            "rationale": "Não é adequado para separar seções ou alertas."
+          }
+        ],
+        "best_practices": [
+          "Manter o texto da citação curto (máximo 2-3 linhas).",
+          "Informar o autor quando possível para reforçar a autoridade.",
+          "Usar estilo consistente com o tom do artigo (ex: citações formais para conteúdo técnico).",
+          "Evitar citações genéricas ou clichês (ex: 'O sucesso é a soma de pequenos esforços').",
+          "Posicionar após o parágrafo que introduz o contexto da citação."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_quote author=\"{author}\" cite=\"{cite}\"]Texto da citação[/tie_quote]",
+        "parameters": [
+          {
+            "name": "author",
+            "type": "string",
+            "required": false,
+            "description": "Nome do autor da citação."
+          },
+          {
+            "name": "cite",
+            "type": "string",
+            "required": false,
+            "description": "Fonte da citação (URL ou referência)."
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Citação de especialista em artigo técnico.",
+          "code": "[tie_quote author=\"Jakob Nielsen\" cite=\"https://www.nngroup.com/articles/ten-usability-heuristics/\"]Usabilidade é sobre projetar sistemas que sejam fáceis de aprender e eficientes de usar.[/tie_quote]",
+          "context": {
+            "content_type": "artigo sobre UX",
+            "audience": "designers",
+            "intent": "autoridade"
+          },
+          "variations": [
+            {
+              "description": "Citação sem autor, apenas para ênfase.",
+              "code": "[tie_quote]A simplicidade é a sofisticação máxima.[/tie_quote]"
+            }
+          ]
+        },
+        {
+          "description": "Depoimento de cliente em página de produto.",
+          "code": "[tie_quote author=\"Maria Silva, CEO da Empresa X\"]Este software reduziu nosso tempo de processamento em 50%.[/tie_quote]",
+          "context": {
+            "content_type": "página de produto",
+            "audience": "potenciais clientes",
+            "intent": "prova social"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Citações devem ser anunciadas como tal por leitores de tela (ex: 'Citação:').",
+        "Garantir contraste suficiente entre o texto da citação e o fundo.",
+        "Evitar estilos que imitem citações (ex: aspas) para não confundir usuários com deficiência visual."
+      ],
+      "seo_considerations": [
+        "Citações de fontes autoritativas podem melhorar a credibilidade do conteúdo.",
+        "Usar `cite` para links externos relevantes (ex: artigos de referência).",
+        "Evitar citações excessivas que diluam o conteúdo original."
+      ]
+    },
+    {
+      "id": "tie_content_index",
+      "name": "Content Index",
+      "category": "navigation",
+      "description": "Gera automaticamente um índice clicável com base nos headings (`<h2>`, `<h3>`) de um artigo, permitindo navegação rápida em textos longos.",
+      "semantic_intent": [
+        "navegação",
+        "índice",
+        "sumário",
+        "escaneabilidade",
+        "hierarquia de conteúdo"
+      ],
+      "use_cases": {
+        "when_to_use": [
+          {
+            "context": "Artigos longos ou estruturados",
+            "scenario": "Índice no início de um guia com 5+ seções.",
+            "rationale": "Melhora a experiência do usuário e reduz a taxa de rejeição."
+          },
+          {
+            "context": "Conteúdo com múltiplas seções",
+            "scenario": "Artigo com headings como 'Introdução', 'Como Funciona', 'Conclusão'.",
+            "rationale": "Permite ao leitor pular para a seção de interesse."
+          },
+          {
+            "context": "SEO e UX",
+            "scenario": "Índice em artigos 'how-to' ou tutoriais.",
+            "rationale": "Favorecido pelo Google para rich snippets."
+          }
+        ],
+        "when_not_to_use": [
+          {
+            "context": "Artigos curtos (menos de 3 seções)",
+            "rationale": "Não há necessidade de navegação adicional."
+          },
+          {
+            "context": "Sem hierarquia clara de headings",
+            "rationale": "Índice confuso ou desorganizado."
+          },
+          {
+            "context": "Conteúdo não estruturado",
+            "rationale": "Quebra a expectativa de navegação."
+          }
+        ],
+        "best_practices": [
+          "Garantir que os headings (`<h2>`, `<h3>`) sejam descritivos e concisos.",
+          "Usar no máximo 2 níveis de profundidade (`depth=\"2\"`) para evitar complexidade.",
+          "Posicionar após a introdução do artigo, antes do primeiro heading.",
+          "Manter o título do índice claro (ex: 'Neste Artigo').",
+          "Evitar headings genéricos (ex: 'Seção 1', 'Parte 2')."
+        ]
+      },
+      "syntax": {
+        "base": "[tie_content_index title=\"{title}\" depth=\"{depth}\"]",
+        "parameters": [
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "Título do índice. Padrão: 'Conteúdo'.",
+            "examples": ["Índice", "Neste Artigo", "Sumário"]
+          },
+          {
+            "name": "depth",
+            "type": "integer",
+            "required": false,
+            "description": "Profundidade dos headings a serem incluídos. Padrão: 2 (até `<h3>`).",
+            "examples": [2, 3]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Índice padrão em artigo longo.",
+          "code": "[tie_content_index title=\"Neste Artigo\" depth=\"2\"]",
+          "context": {
+            "content_type": "guia completo",
+            "audience": "leitores gerais",
+            "intent": "navegação",
+            "placement": "após a introdução"
+          },
+          "variations": [
+            {
+              "description": "Índice com profundidade até `<h3>`.",
+              "code": "[tie_content_index depth=\"3\"]"
+            }
+          ]
+        },
+        {
+          "description": "Índice em tutorial técnico.",
+          "code": "[tie_content_index title=\"Passos\" depth=\"2\"]",
+          "context": {
+            "content_type": "tutorial",
+            "audience": "desenvolvedores",
+            "intent": "navegação sequencial"
+          }
+        }
+      ],
+      "accessibility_notes": [
+        "Garantir que o índice seja navegável por teclado.",
+        "Usar `aria-label` para descrever a função do índice (ex: 'Navegação por seções').",
+        "Evitar âncoras que não correspondam exatamente aos headings."
+      ],
+      "seo_considerations": [
+        "Índices melhoram a estrutura semântica do conteúdo, o que pode favorecer o SEO.",
+        "Headings bem estruturados são essenciais para que o índice seja útil para crawlers.",
+        "Artigos com índices podem ser elegíveis para rich snippets (ex: 'Jump to Section')."
+      ]
+    }
+  ],
+  "relationships": {
+    "complementary_shortcodes": [
+      {
+        "shortcodes": ["tie_box", "tie_highlight"],
+        "description": "Boxes são usados para alertas ou notas, enquanto Highlight enfatiza conceitos-chave dentro do texto. Juntos, criam uma hierarquia de importância visual."
+      },
+      {
+        "shortcodes": ["tie_list", "tie_columns"],
+        "description": "Listas organizam informações de forma sequencial, enquanto Columns permitem comparações lado a lado. Úteis para análises de prós/contras."
+      },
+      {
+        "shortcodes": ["tie_tooltip", "tie_highlight"],
+        "description": "Tooltip explica termos técnicos, enquanto Highlight enfatiza conceitos-chave. Combinados, melhoram a compreensão de textos densos."
+      },
+      {
+        "shortcodes": ["tie_button", "tie_content_index"],
+        "description": "Buttons direcionam para ações específicas, enquanto Content Index facilita a navegação em artigos longos. Juntos, melhoram a experiência do usuário."
+      }
+    ],
+    "conflicting_use_cases": [
+      {
+        "shortcodes": ["tie_box", "tie_highlight"],
+        "description": "Evitar usar Boxes para destacar conceitos que poderiam ser enfatizados com Highlight dentro do texto, a menos que a informação precise de separação visual."
+      },
+      {
+        "shortcodes": ["tie_columns", "tie_list"],
+        "description": "Columns não devem ser usadas para substituir listas quando a ordem ou estrutura é importante (ex: passos sequenciais)."
+      },
+      {
+        "shortcodes": ["tie_divider", "tie_content_index"],
+        "description": "Dividers não devem ser usados como substitutos de headings, que são essenciais para o Content Index funcionar corretamente."
+      }
+    ],
+    "semantic_overlaps": [
+      {
+        "shortcodes": ["tie_quote", "tie_box"],
+        "overlap": "Ambos podem ser usados para destacar conteúdo, mas Quotes são para citações externas, enquanto Boxes são para notas editoriais ou alertas."
+      },
+      {
+        "shortcodes": ["tie_highlight", "tie_tooltip"],
+        "overlap": "Ambos enfatizam trechos de texto, mas Highlight é visual e Tooltip é interativo (hover). Usar Highlight para ênfase e Tooltip para explicações."
+      }
+    ]
+  },
+  "training_notes": {
+    "for_nlp_models": {
+      "intent_recognition": {
+        "description": "Os campos `semantic_intent` e `use_cases.when_to_use.scenario` são projetados para treinar modelos a reconhecer a intenção por trás do uso de cada shortcode. Exemplos:",
+        "examples": [
+          {
+            "input": "Preciso destacar um aviso importante sobre um risco no meu tutorial.",
+            "expected_shortcode": "tie_box",
+            "intent": "alerta"
+          },
+          {
+            "input": "Quero que o leitor faça o download de um material após ler o artigo.",
+            "expected_shortcode": "tie_button",
+            "intent": "conversão"
+          }
+        ]
+      },
+      "context_awareness": {
+        "description": "Os campos `use_cases.when_to_use.context` e `use_cases.when_not_to_use` ajudam modelos a entender em quais contextos cada shortcode é apropriado. Exemplos:",
+        "examples": [
+          {
+            "context": "Artigo técnico sobre programação",
+            "shortcode": "tie_tooltip",
+            "rationale": "Explicar siglas como 'API' sem interromper o fluxo."
+          },
+          {
+            "context": "Tutorial passo a passo",
+            "shortcode_to_avoid": "tie_columns",
+            "rationale": "Conteúdo linear não se beneficia de disposição lado a lado."
+          }
+        ]
+      },
+      "parameter_recommendation": {
+        "description": "Os campos `syntax.parameters` e `examples` fornecem dados para sugerir parâmetros com base na intenção. Exemplos:",
+        "examples": [
+          {
+            "intent": "alerta crítico",
+            "shortcode": "tie_box",
+            "recommended_parameters": {
+              "type": "warning",
+              "icon": "fa-exclamation-triangle"
+            }
+          },
+          {
+            "intent": "botão de download",
+            "shortcode": "tie_button",
+            "recommended_parameters": {
+              "style": "flat",
+              "color": "green",
+              "icon": "fa-download"
+            }
+          }
+        ]
+      }
+    },
+    "for_content_generation": {
+      "structure_suggestions": {
+        "description": "Os campos `best_practices` e `examples` podem ser usados para sugerir estruturas de conteúdo. Exemplos:",
+        "examples": [
+          {
+            "content_type": "tutorial",
+            "suggested_shortcodes": [
+              {
+                "shortcode": "tie_content_index",
+                "placement": "após a introdução"
+              },
+              {
+                "shortcode": "tie_list",
+                "placement": "para listar requisitos ou passos",
+                "parameters": {
+                  "type": "ordered"
+                }
+              },
+              {
+                "shortcode": "tie_box",
+                "placement": "para avisos ou dicas",
+                "parameters": {
+                  "type": "tip"
+                }
+              }
+            ]
+          },
+          {
+            "content_type": "review de produto",
+            "suggested_shortcodes": [
+              {
+                "shortcode": "tie_columns",
+                "placement": "para comparar prós e contras",
+                "parameters": {
+                  "columns": 2
+                }
+              },
+              {
+                "shortcode": "tie_quote",
+                "placement": "para depoimentos de clientes"
+              },
+              {
+                "shortcode": "tie_button",
+                "placement": "para links de compra ou teste",
+                "parameters": {
+                  "style": "flat",
+                  "color": "blue"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "accessibility_and_seo": {
+        "description": "Os campos `accessibility_notes` e `seo_considerations` fornecem diretrizes para gerar conteúdo inclusivo e otimizado. Exemplos:",
+        "examples": [
+          {
+            "shortcode": "tie_highlight",
+            "accessibility": "Garantir contraste mínimo de 3:1 entre texto e fundo.",
+            "seo": "Usar para destacar palavras-chave relevantes, mas sem exagero."
+          },
+          {
+            "shortcode": "tie_tooltip",
+            "accessibility": "Fornecer alternativa para dispositivos sem hover (ex: botão '?').",
+            "seo": "Evitar esconder conteúdo crítico para SEO no tooltip."
+          }
+        ]
+      }
+    },
+    "for_ux_writing": {
+      "tone_and_clarity": {
+        "description": "Os campos `use_cases` e `examples` ajudam a adaptar a linguagem dos shortcodes ao tom do conteúdo. Exemplos:",
+        "examples": [
+          {
+            "shortcode": "tie_button",
+            "tone": "direto e orientado à ação",
+            "examples": [
+              "Baixar E-book (formal)",
+              "Quero Me Cadastrar (convite)",
+              "Saiba Mais (curiosidade)"
+            ]
+          },
+          {
+            "shortcode": "tie_box",
+            "tone": "variável conforme o `type`",
+            "examples": [
+              {
+                "type": "warning",
+                "tone": "urgente e claro",
+                "example": "Atenção: Este método não é compatível com versões antigas."
+              },
+              {
+                "type": "tip",
+                "tone": "amigável e útil",
+                "example": "Dica: Use atalhos de teclado para economizar tempo."
+              }
+            ]
+          }
+        ]
+      },
+      "microcopy_suggestions": {
+        "description": "Os campos `syntax.parameters` e `examples` fornecem sugestões de microcopy para rótulos e títulos. Exemplos:",
+        "examples": [
+          {
+            "shortcode": "tie_box",
+            "parameter": "title",
+            "suggestions": ["Atenção", "Pré-requisitos", "Dica do Autor", "Observação"]
+          },
+          {
+            "shortcode": "tie_content_index",
+            "parameter": "title",
+            "suggestions": ["Neste Artigo", "Índice", "Sumário", "O Que Você Vai Aprender"]
+          }
+        ]
+      }
+    }
+  }
+}
