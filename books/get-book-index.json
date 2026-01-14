@@ -1,0 +1,71 @@
+{
+  "fluxo_livro_verificacao": {
+    "etapas": [
+      {
+        "etapa": 3,
+        "nome": "Pesquisa do Sumário/Capítulos",
+        "objetivo": "Obter a estrutura do livro (capítulos/seções) sem alucinações.",
+        "acoes": [
+          {
+            "id": "3.1",
+            "descricao": "Buscar sumário em fontes confiáveis por ordem de prioridade",
+            "prioridade_fontes": [
+              "Google Books ('Índice' ou 'Table of Contents')",
+              "Amazon ('Olhar dentro do livro')",
+              "Resenhas detalhadas (Goodreads, blogs técnicos)",
+              "PDFs de amostra (legalmente disponíveis)"
+            ]
+          },
+          {
+            "id": "3.2",
+            "descricao": "Extrair capítulos e páginas, se disponíveis",
+            "exemplo_saida_valida": {
+              "capitulos": [
+                { "titulo": "Introdução à Engenharia de Software", "pagina": 1 },
+                { "titulo": "Processos de Software", "pagina": 25 }
+              ]
+            },
+            "exemplo_saida_indisponivel": {
+              "capitulos": "Não disponível em fontes públicas",
+              "fontes_consultadas": ["Google Books", "Amazon"]
+            }
+          },
+          {
+            "id": "3.3",
+            "descricao": "Validar origem do sumário",
+            "regra": "Se a estrutura vier de resenha, marcar como origem: 'resenha'",
+            "exemplo_origem_resenha": {
+              "origem": "resenha",
+              "fonte": {
+                "url": "https://goodreads.com/...",
+                "autor": "Fulano (Goodreads)"
+              }
+            }
+          }
+        ],
+        "saida": {
+          "artefato": "A3",
+          "formato": {
+            "sumario": {
+              "tipo": "oficial | resenha | nao_encontrado",
+              "dados": [
+                {
+                  "titulo": "Capítulo 1: Introdução",
+                  "pagina": 1
+                },
+                {
+                  "titulo": "Capítulo 2: Processos",
+                  "pagina": 25
+                }
+              ],
+              "fonte": {
+                "url": "https://books.google.com/...",
+                "tipo": "Google Books"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
