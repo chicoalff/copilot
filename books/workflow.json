@@ -1007,51 +1007,6 @@
       }
     ]
   },
-  "comparative_summary": {
-    "title": "Resumo das Alterações vs. Fluxo Original",
-    "table": [
-      {
-        "aspecto": "Entrada do usuário",
-        "fluxo_original_com_pdf": "PDF + metadados",
-        "fluxo_atualizado_sem_pdf": "Apenas título e autor"
-      },
-      {
-        "aspecto": "Fontes de dados",
-        "fluxo_original_com_pdf": "PDF (extração direta)",
-        "fluxo_atualizado_sem_pdf": "Google Books, Amazon, Goodreads, editoras"
-      },
-      {
-        "aspecto": "Sumário/Capítulos",
-        "fluxo_original_com_pdf": "Extraído do PDF",
-        "fluxo_atualizado_sem_pdf": "Pesquisado em prévias online"
-      },
-      {
-        "aspecto": "Tópicos/Temas",
-        "fluxo_original_com_pdf": "Análise de frequência no texto",
-        "fluxo_atualizado_sem_pdf": "Descrições editoriais + resenhas"
-      },
-      {
-        "aspecto": "Público-alvo",
-        "fluxo_original_com_pdf": "Inferido do conteúdo",
-        "fluxo_atualizado_sem_pdf": "Extraído de descrições e resenhas"
-      },
-      {
-        "aspecto": "Diferenciais",
-        "fluxo_original_com_pdf": "Comparação com outros PDFs",
-        "fluxo_atualizado_sem_pdf": "Resenhas e descrições comparativas"
-      },
-      {
-        "aspecto": "Rigor factual",
-        "fluxo_original_com_pdf": "Alto (texto extraído do PDF)",
-        "fluxo_atualizado_sem_pdf": "Alto (todas as informações têm fonte)"
-      },
-      {
-        "aspecto": "Risco de alucinação",
-        "fluxo_original_com_pdf": "Baixo (dados no PDF)",
-        "fluxo_atualizado_sem_pdf": "Controlado (apenas fontes confiáveis)"
-      }
-    ]
-  },
   "end_to_end_example": {
     "user_input_example": {
       "titulo": "Engenharia de Software",
